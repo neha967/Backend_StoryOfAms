@@ -1,8 +1,9 @@
+require('dotenv').config();
+
 const express = require('express');
 const mongoose = require("mongoose");
 const bodyParser   = require('body-parser');
 const cors = require("cors");
-const PORT = 5000;
 
 mongoose
   .connect('mongodb://localhost/projectdetails', {useNewUrlParser: true})
@@ -33,4 +34,4 @@ app.use("/", deleteRoute)
 const updateRoute = require("./routes/update");
 app.use("/", updateRoute)
 
-app.listen(PORT, () => console.log(`App running on port ${PORT}`));
+app.listen(`${process.env.PORT}`, () => console.log(`App running on port ${process.env.PORT}`));
